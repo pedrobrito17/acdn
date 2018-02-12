@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-painel}">
+
+	<head>
+		<title>ACDN Rental Car</title>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+        <meta charset="utf-8">
+	</head>
+	
+	<body>
+	
+            		
+           		<div layout:fragment="conteudo-painel"></br></br>
+           		
+           			<form th:object="${cliente}" method="post" th:action="@{meusdados}"> 
+           			
+           				<div class="alert alert-danger alert-dismissible" th:if="${#fields.hasAnyErrors() or erro != null}">
+	        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                		<ul>
+							  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+							  <li th:if="${erro} != null" th:text="${erro}" />
+							</ul>
+                		</div>
+      					
+	        			<div class="alert alert-success alert-dismissible" th:if="${menssagem} != null">
+	        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                		<span th:text="${menssagem}">Mensagem correta!</span>
+	                	</div>                                     
+                    	
+                    	<label>nome completo*</label>
+                        <input class="form-control" type="text" placeholder="Nome completo" th:field="*{nome}"/>
+                        <label class="margin-top">e-mail*</label>
+                        <input class="form-control" type="email" placeholder="E-mail" th:field="*{email}"/>
+                        
+                        <label class="left margin-top">cpf* </label>
+                        <label class="right margin-top">número da carteira nacional de habilitação* </label></br></br>
+                        <input class="form-control input-vizinho left" type="text" placeholder="CPF" th:field="*{cpf}"/>
+                        <input class="form-control input-vizinho right" type="text" placeholder="CNH" th:field="*{cnh}"/>
+                        
+                        </br></br>
+                        <label class="left margin-top">validade da carteira nacional de habilitação* </label>
+                        <label class="right margin-top">categoria da carteira nacional de habilitação* </label></br></br>
+                        <input class="form-control input-vizinho left" type="text" placeholder="Validade CNH" th:field="*{validade_cnh}"/>
+                        <input class="form-control input-vizinho right margin-botton" th:field="*{categoria_cnh}"/>
+                        
+
+                        <input class="form-control hidden" type="text" placeholder="Senha" th:field="*{senha}"/>
+                        <input class="form-control hidden" type="text" placeholder="Repetir senha" th:field="*{conf_senha}"/><br/>
+
+                        <button class="btn btn-success width-total margin-top" type="submit">atualizar cadastro</button>
+                   	</form>
+           		
+           		</div>
+                     
+       
+	</body>
+</html>

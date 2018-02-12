@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-simples}">
+
+	<head>
+		<title>ACDN Rental Car</title>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+        <meta charset="utf-8">
+	</head>
+	
+	<body>
+	
+    	<main layout:fragment="conteudo-principal">
+    		
+    		<div class="container body-topo">
+    		
+            	<div class="row">
+
+            		<div class="col-md-3">
+            			
+						  <h3>Painel do cliente</h3>
+						  <div class="list-group">
+
+						  	  <a class="list-group-item" th:href="@{/acdn/painel}">Minha conta</a>
+						      <a class="list-group-item dropdown-toggle" th:href="@{/acdn/meusdados}">Meus dados cadastrais</a>
+						      <a class="list-group-item" th:href="@{/acdn/minhasenha}">Minha senha de acesso</a>
+						      <a class="list-group-item" href="#">Meus cartões de crédito</a>
+						      
+						      <span class="list-group-item dropdown">
+						          <a href="#" class="dropdown-toggle" style="color: rgba(0,0,0,.7);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Minhas reservas <span class="caret"></span></a>
+						          <ul class="dropdown-menu">
+							            <li><a th:href="@{/acdn/minhasreservas}">Reservas ativas</a></li>
+							            <li><a th:href="@{/acdn/historicoreservas}">Histórico das minhas reservas</a></li>
+							            <li><a th:href="@{/acdn/novareserva}">Nova reserva</a></li>
+						          </ul>
+					        </span>
+						  </div>
+	                
+            		</div>
+            		
+            		<div layout:fragment="conteudo-painel" class="col-md-offset-1 col-md-8">
+            			
+            		</div>
+            	
+            	</div>
+            
+            </div>
+	            
+    	
+    	</main>                         
+	</body>
+</html>
