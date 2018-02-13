@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-painel}">
+
+	<head>
+		<title>ACDN Rental Car</title>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+        <meta charset="utf-8">
+	</head>
+	
+	<body>
+	
+            		
+           		<div layout:fragment="conteudo-painel"></br></br>
+           		
+           			<h3>Bem vindo <span th:object="${cliente}" th:text="*{nome}">teste</span>!</h3>
+           			
+           			<div class="alert alert-success alert-dismissible" th:if="${menssagem} != null">
+        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<span th:text="${menssagem}">Mensagem correta!</span>
+		            </div> 
+           		</div>
+                     
+       
+	</body>
+</html>

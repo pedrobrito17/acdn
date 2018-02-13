@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-simples}">
+
+	<head>
+		<title>ACDN Rental Car</title>
+        
+        <meta charset="utf-8">
+	</head>
+	
+	<body>
+	
+    	<main layout:fragment="conteudo-principal">
+    		
+    		<div class="container body-topo">
+            <h2>Frota de veículos</h2><br>
+	            <div class="row">
+	                    <figure class="thumbnail text-center col-md-3 thumbnail-custom" alt="carro">
+	                        <img class="img-responsive img-frota" th:src="@{/layout/img/carro1.jpg}"/>
+	                        <figcaption>
+	                            <h5>A - SUBCOMPACTO</h5>
+	                            <p class="text-justify" style="font-size:1em;">Motor 1.0 - Básico - 2 ou 4 portas
+	                            VW Gol, FIAT Pálio, FIAT Uno ou GM Celta. <br><br>
+	                            <i class="fa fa-angle-double-right" aria-hidden="true"></i> Diária: R$ 90,00 com km livre</p>
+	                        </figcaption>
+	                    </figure>
+	                <figure class="thumbnail text-center col-md-3 thumbnail-custom" alt="carro"/>
+	                    <img class="img-responsive img-frota" th:src="@{/layout/img/carro2.png}"/>
+	                    <figcaption>
+	                        <h5>C - COMPACTO</h5>
+	                        <p class="text-justify" style="font-size:1em;">Veículos com motor 1.0, equipados com ar condicionado, direção hidráulica, vidros e travas elétricas e som. VW Gol ou FIAT Pálio ou FIAT Novo Uno.<br><br>
+	                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Diária: R$ 105,00 com km livre</p>
+	                    </figcaption>
+	                </figure>
+	                <figure class="thumbnail text-center col-md-3 thumbnail-custom" alt="carro"/>
+	                    <img class="img-responsive img-frota" th:src="@{/layout/img/carro3.jpg}">
+	                    <figcaption>
+	                        <h5>F - TAMANHO MÉDIO</h5>
+	                        <p class="text-justify" style="font-size:1em;">Veículos com motor 1.4 ou 1.6 , equipados com ar condicionado, direção hidráulica, vidros e travas elétricas e som. FIAT Palio Attractive 1.4 , Fiat Punto 1.4 , Novo Uno Way 1.4, VW Gol 1.6 , VW Fox 1.6 , VW SpaceFox 1.6 , Renault Logan 1.6, Honda City 1.5<br><br>
+	                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Diária: R$ 118,00 com km livre
+	                    </figcaption>
+	                </figure>
+	            </div>
+	            <br>
+	            <div class="row">
+	                <figure class="thumbnail text-center col-md-3 thumbnail-custom" alt="carro">
+	                    <img class="img-responsive img-frota" th:src="@{/layout/img/carro4.jpg}"/>
+	                    <figcaption>
+	                        <h5>TAMANHO GRANDE</h5>
+	                        <p class="text-justify" style="font-size:1em;">Veículos com motor 1.6 ou superior, equipados com ar condicionado, direção hidráulica, vidros e travas elétricas , som, air bag e freios ABS. <br><br>
+	
+	                        RENAULT DUSTER OU SIMILAR <br><br>
+ 
+	                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Diária: R$ 126,00 com km livre
+	                    </figcaption>
+	                </figure>
+	                <figure class="thumbnail text-center col-md-3 thumbnail-custom" alt="carro">
+	                    <img class="img-responsive img-frota" th:src="@{/layout/img/carro6.jpg}">
+	                    <figcaption>
+	                        <h5>LUXO</h5>
+	                        <p class="text-justify" style="font-size:1em;">Veículos com motor 2.0, equipados com ar condicionado, direção hidráulica, vidros e travas elétricas , cd , Air bag e ABS.<br><br>
+	
+	                        FORD FUSION FWD GTDI <br><br>
+
+	                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Diária: R$ 155,00 com km livre
+	                    </figcaption>
+	                </figure>         
+	            </div>
+           
+        	</div>
+    	
+    	</main>                         
+       
+	</body>
+</html>

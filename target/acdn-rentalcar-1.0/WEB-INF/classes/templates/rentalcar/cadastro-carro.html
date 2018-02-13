@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-simples}">
+	
+	<head>
+		<title>ACDN Rental Car</title>        
+        <meta charset="utf-8"/>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	
+	<body>
+		<main layout:fragment="conteudo-principal">
+			
+			<div class="container body-topo ">    
+				
+				<form class="form-group" method="post" th:action="@{cadastrarcarro}" th:object="${carro}" >
+				
+					<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+						<ul>
+						  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+						</ul>	
+					</div>
+									
+					<h3>Cadastrar carro</h3>
+					
+				    <div class="row">
+				        <div class="col-md-4">
+				            <input class="form-control" type="text" placeholder="Placa" th:field="*{placa}"/>
+				        </div>
+				        <div class="col-md-4">
+				            <input class="form-control" type="text" placeholder="Ano do modelo" th:field="*{ano}"/>
+				        </div>
+				        <div class="col-md-4">
+				            <input class="form-control" type="text" placeholder="Kilometragem" th:field="*{km}"/>
+				        </div>
+				    </div><br/>
+				    
+				    <div class="row">
+				        <div class="col-md-4">
+				            <input class="form-control" type="text" placeholder="Marca" th:field="*{marca}"/>
+				        </div>
+				        <div class="col-md-4">
+				            <input class="form-control" type="text" placeholder="Modelo" th:field="*{modelo}"/>
+				        </div>
+				        <div class="col-md-4">
+				        	<select id="classe-carro" name="classe-carro" class="form-control" th:field="*{classeCarro.classe}">
+				        		<option th:value="classe">classe do carro</option>
+				        		<option th:each="classe : ${classes}" th:value="${classe.classe}" 
+				        			th:text="${classe.classe}">classe do carro</option>
+                            </select>
+				        </div>
+				    </div></br>
+				    
+				    <div class="row">
+				        <div class="col-md-12">
+				            <textarea class="form-control" rows="5" th:field="*{descricao}" placeholder="Descrição"></textarea>
+				        </div>
+				    </div><br/>
+				    <div class="row">
+				        <div class="col-md-12">
+				            <button class="btn btn-success right" type="submit">CADASTRAR</button>
+				        </div>  
+				    </div>
+				
+				</form>
+				
+				<br/>
+				<br/>
+				
+				<div class="table-responsive">
+				    <table class="table">
+				        <thead>
+				            <tr>
+				                <th class="col-table100">Placa</th>
+				                <th class="col-table100">Marca</th>
+				                <th class="col-table180">Modelo</th>
+				                <th class="col-table100">Ano do modelo</th>
+				                <th class="col-table100">Kilometragem</th>
+				                <th class="col-table100">classe</th>
+				                <th>Descrição</th>
+				                <th class="col-table60"></th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr th:each="carro : ${carros}">
+				            	<th th:text="${carro.placa}"></th>
+				            	<th th:text="${carro.marca}"></th>
+				            	<th th:text="${carro.modelo}"></th>
+				            	<th th:text="${carro.ano}"></th>
+				            	<th th:text="${carro.km}"></th>
+				            	<th th:text="${carro.classeCarro.classe}">teste</th>
+				            	<th th:text="${carro.descricao}"></th>
+				            	<th> 
+				            		<form method="get" th:action="@{cadastrarcarro/{placa}(placa=${carro.placa})}">
+				            			<input type="hidden" />
+				            			<button type="submit" class="btn">
+				            				<i class="fa fa-trash" style="font-size:20px"></i>
+				            			</button>
+				            		</form>
+				            		
+				            	</th>
+				            </tr>
+				        </tbody>
+				    </table>
+				</div>        
+			   
+			</div>
+		      
+		      
+		      
+		</main>
+	        
+	</body>
+</html>

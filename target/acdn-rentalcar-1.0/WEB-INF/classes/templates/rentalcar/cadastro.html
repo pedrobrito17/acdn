@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-simples}">
+	
+	<head>
+		<title>ACDN Rental Car</title>        
+        <meta charset="utf-8"/>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+	</head>
+	
+	<body>
+		<main layout:fragment="conteudo-principal">
+	        <!-- Body -->
+	        <div class="container body-topo">        	
+	                	
+	            <div class="row">
+	                <div class="col-md-5 col-md-offset-1" style="padding-right:10%;"> 
+	                    <h3 class="h3-custom">Acessar minha conta</h3>
+	                    <form th:object="${cliente}" method="post" th:action="@{/acdn/logar-cliente}">
+	                    	
+	                    	<div class="alert alert-danger alert-dismissible" th:if="${errologar}">
+		        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  <span>Erro no login ou senha.</span>
+	                		</div>
+	                    
+	                        <input class="form-control" type="text" placeholder="Informe seu e-mail" th:field="*{email}"/>
+	                        <input class="form-control margin-top" type="password" placeholder="Senha" th:field="*{senha}"/><br/>
+	                        <a th:href="@{/acdn/esquecisenha}">Esqueci minha senha</a><br/><br/>
+	                        <button class="btn btn-success width-total" type="submit">Acessar conta</button>    
+                    	</form> 
+	                </div>
+	                
+	                <div class="col-md-5" style="padding-left:10%; border-left:1px solid rgba(0,0,0,.2);">
+	                    <h3 class="h3-custom">Ainda não tenho cadastro</h3>
+	                    <form th:object="${cliente}" method="post" th:action="@{/acdn/cadastro}">
+	                    	
+	                    	<div class="alert alert-danger alert-dismissible" th:if="${#fields.hasAnyErrors() or erro != null}">
+		        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                		<ul>
+								  <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+								  <li th:if="${erro} != null" th:text="${erro}" />
+								</ul>
+	                		</div>
+	      					
+		        			<div class="alert alert-success alert-dismissible" th:if="${menssagem} != null">
+		        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                		<span th:text="${menssagem}">Mensagem correta!</span>
+		                	</div>                                  
+	                    
+	                        <input class="form-control" type="text" placeholder="Nome completo" th:field="*{nome}"/>
+	                        <input class="form-control margin-top" type="email" placeholder="E-mail" th:field="*{email}"/>
+	                        
+	                        <input class="form-control input-vizinho left margin-top" type="text" placeholder="CPF" th:field="*{cpf}"/>
+	                        <input class="form-control input-vizinho right margin-top" type="text" placeholder="CNH" th:field="*{cnh}"/>
+	                        
+	                        <input class="form-control input-vizinho left margin-top" type="text" placeholder="Validade CNH" th:field="*{validade_cnh}"/>
+	                        <select class="form-control input-vizinho right margin-top margin-botton" th:field="*{categoria_cnh}">
+	                        	<option value="vazio">Categoria CNH</option>
+	                        	<option value="B">B</option>
+	                        	<option value="C">C</option>
+	                        	<option value="D">D</option>
+	                        	<option value="E">E</option>
+	                        </select>
+	                        <input class="form-control margin-top" type="password" placeholder="Senha" th:field="*{senha}"/>
+	                        <input class="form-control margin-top" type="password" placeholder="Repetir senha" th:field="*{conf_senha}"/><br/>
+	                        <button class="btn btn-success width-total" type="submit">Criar conta</button>
+                    	</form>                
+	                </div>
+	            </div>
+	           
+	        </div>
+	     </main>
+	        
+	</body>
+</html>
