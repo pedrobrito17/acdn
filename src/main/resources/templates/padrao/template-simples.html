@@ -39,39 +39,7 @@
                         <h5 class="visible-xs font-style-logo">ACDN Rental Car</h5>                      
                     </a></div>
                     
-                    <!-- CLIENTE ESTA LOGADO -->
-                    <div class="div-login inline" th:if="${cliente.nome} != null">
-                    	<a style="color: #fff;" th:href="@{/acdn/logout}">Sair</a>
-                    </div>
                     
-                    <!--  CLIENTE NÃO ESTA LOGADO -->
-                    <div class="div-login inline" th:if="${cliente.nome} == null">                        
-                        <h5 class="inline header-color-custom" role="button" id="callPopover">Login <i class="fa fa-chevron-down" aria-hidden="true"></i></h5>
-                        
-                        <!-- Popover Login -->
-                        <div id="myPopover" class="hide">
-                                        
-                            <form th:object="${cliente}" method="post" th:action="@{/acdn/logar-cliente}" >
-                                <div class="form-group">
-                                    <div keyboard="true" class="input-group">
-                                        <span class="input-group-addon border-login"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input class="form-control input-login" type="text" placeholder="login" th:field="*{email}"/>             
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon border-pass"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input class="form-control input-passw" type="password" placeholder="senha" th:field="*{senha}"/>
-                                    </div>
-                                                                                      
-                                </div>
-                                <button type="submit" class="btn btn-success center-block">Entrar</button>           
-                            </form>
-                            <div>
-                                <h6>Não tem conta? <a th:href="@{/acdn/cadastro}">Cadastre-se</a></h6>  
-                                <h6><a th:href="@{/acdn/esquecisenha}">Esqueci minha senha</a></h6>
-                            </div>
-                            
-                        </div>
-                    </div>
                     
                     <div class="div-icon-menu inline">
                         <a href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x hidden-sm hidden-xs header-color-custom" aria-hidden="true"></i></a>
