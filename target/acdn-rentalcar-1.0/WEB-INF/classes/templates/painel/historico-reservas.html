@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{padrao/template-painel}">
+
+	<head>
+		<title>ACDN Rental Car</title>
+        <link type="text/css" rel="stylesheet" th:href="@{/layout/css/cadastro.css}"/>
+        <meta charset="utf-8">
+	</head>
+	
+	<body>
+	
+            		
+   		<div layout:fragment="conteudo-painel"></br></br>
+   			<h3>Histórico das reservas</h3>
+   			<div th:object="${reservasDoCliente}"> 
+   				</br>
+   				<div class="alert alert-danger alert-dismissible" th:if="${#lists.isEmpty(reservasDoCliente)}">
+				<span>Você não possui nenhum reserva finalizada</span>
+        		</div>
+                		
+                		<div class="table-responsive" th:if="${not #lists.isEmpty(reservasDoCliente)}">
+				    		<table class="table">
+						        <thead>
+						            <tr>
+						                <th class="col-table60">Nº Reserva</th>
+						                <th class="col-table60">Diárias</th>
+						                <th class="col-table100">Locação</th>
+						                <th class="col-table100">Devolução</th>
+						                <th class="col-table100">Situação</th>
+						                <th class="col-table100"></th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr th:each="reserva : ${reservasDoCliente}">
+						            	<th th:text="${reserva.numReserva}"></th>
+						            	<th th:text="${reserva.qtdDiarias}"></th>
+						            	<th th:text="${reserva.dataLocacao}"></th>
+						            	<th th:text="${reserva.dataDevolucao}"></th>
+						            	<th th:text="${reserva.situacao}"></th>
+						            	<th>
+						            	<form method="get" th:action="@{detalharreserva}">
+						            		<input class="hidden form-control" type="text" th:value="${reserva.numReserva}" name="numReserva"/>
+						            		
+						            		<button value="Submit" class="btn btn-default" type="submit">detalhar</button>
+						            	</form>
+						            	</th>
+						            </tr>
+						        </tbody>
+				    		</table>
+
+                   	</div>
+           		
+           		</div>
+                     
+       
+	</body>
+</html>
